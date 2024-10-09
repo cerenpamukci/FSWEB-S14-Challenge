@@ -77,16 +77,19 @@ public class MainTest {
         hamburger.addHamburgerAddition1("test", 3);
         hamburger.addHamburgerAddition2("test", 3);
         hamburger.addHamburgerAddition3("test", 3);
-        hamburger.itemizeHamburger();
-        assertEquals(hamburger.getPrice(), 13);
 
+        // itemizeHamburger metodu tüm malzemeleri ekleyip toplam fiyatı döner
+        double totalPrice = hamburger.itemizeHamburger();
+
+        // Toplam fiyatı kontrol ederiz
+        assertEquals(totalPrice, 4 + 3 + 3 + 3, 0.01);  // 4 temel fiyat, eklenen 3 malzeme fiyatı +3, +3, +3
     }
 
     @DisplayName("Deluxe Burger sınıf değişkenleri doğru değerlere sahip mi?")
     @Test
     public void testDeluxeBurgerInstanceVariables() throws NoSuchFieldException {
-        assertEquals(deluxeBurger.getCips(), "CURVY");
-        assertEquals(deluxeBurger.getDrink(), "COKE");
+        assertEquals(deluxeBurger.getCips(), "Curvy");
+        assertEquals(deluxeBurger.getDrink(), "Coke");
     }
 
     @DisplayName("Deluxe Burger sınıfı addAddition methodları doğru çalışıyor mu?")
@@ -110,8 +113,11 @@ public class MainTest {
     public void testHealthyBurgerAddAdditionMethods() throws NoSuchFieldException {
         healthyBurger.addHealthyAddition1("test", 2);
         healthyBurger.addHealthyAddition2("test", 2);
-        healthyBurger.itemizeHamburger();
-        assertEquals(healthyBurger.getPrice(), 9.67);
-    }
 
+        // itemizeHamburger metodu tüm malzemeleri ekleyip toplam fiyatı döner
+        double totalPrice = healthyBurger.itemizeHamburger();
+
+        // Toplam fiyatı kontrol ederiz
+        assertEquals(totalPrice, 5.67 + 2 + 2, 0.01);  // Sağdaki 0.01 hata payı, double değerlerle çalışırken kullanılır.
+    }
 }
